@@ -96,7 +96,7 @@ function DashboardSidebarContent() {
       <Sidebar className="border-r-0  " collapsible="icon">
         <SidebarContent className="bg-white">
           <div
-            className={`flex items-center justify-center  px-0 md:px-4 py-6 relative ${
+            className={`flex items-center justify-center  px-0 md:px-4 py-4 relative ${
               isCollapsed ? "px-2" : "gap-2"
             }`}
           >
@@ -110,9 +110,6 @@ function DashboardSidebarContent() {
                   className="rounded-xl object-contain"
                 />
               </Link>
-              {!isCollapsed && (
-                <h1 className="font-bold text-base">Securiverse</h1>
-              )}
             </div>
 
             {/* Collapse button for desktop */}
@@ -126,10 +123,6 @@ function DashboardSidebarContent() {
               isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-1"
             }
           >
-            {!isCollapsed && (
-              <p className="text-xs text-gray-600 pl-4 pt-2">Dashboard</p>
-            )}
-
             {navItems.map((item) => (
               <NavItem
                 key={item.href}
@@ -210,16 +203,20 @@ function NavItem({
 }: NavItemProps) {
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton asChild>
+      <SidebarMenuButton
+        asChild
+        className={cn(
+          active
+            ? "bg-orange-500 text-white hover:text-white hover:bg-orange-500 focus:bg-orange-600 font-medium"
+            : "bg-transparent text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium"
+        )}
+      >
         <Link
           href={href}
           className={cn(
             collapsed
               ? "flex items-center justify-center px-2 py-3 transition-colors rounded-full w-12 h-12 mx-auto"
-              : "flex items-center gap-3 px-4 py-3 transition-colors rounded-md",
-            active
-              ? "bg-orange-500 text-white hover:bg-orange-600 font-medium"
-              : "bg-transparent text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium"
+              : "flex items-center gap-3 px-4 py-3 transition-colors rounded-md"
           )}
         >
           <Icon size={collapsed ? 20 : 18} />
