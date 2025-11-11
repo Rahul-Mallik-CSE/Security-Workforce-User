@@ -26,7 +26,7 @@ import {
   IoGridOutline,
 } from "react-icons/io5";
 import { RiBriefcaseLine, RiMapPinLine } from "react-icons/ri";
-import { HiOutlineShieldCheck } from "react-icons/hi";
+
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
 import { BiSupport, BiUserPlus } from "react-icons/bi";
