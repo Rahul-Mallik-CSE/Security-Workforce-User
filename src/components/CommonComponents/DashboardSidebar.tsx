@@ -30,7 +30,7 @@ import { HiOutlineShieldCheck } from "react-icons/hi";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
 import { BiSupport, BiUserPlus } from "react-icons/bi";
-import { FaUserAlt } from "react-icons/fa";
+import { FaShieldAlt, FaUserAlt } from "react-icons/fa";
 import LogoutModal from "./LogOutModal";
 
 // import { logout } from "@/service/authService";
@@ -72,7 +72,7 @@ function DashboardSidebarContent() {
     {
       href: "/preferred-operatives",
       label: "Preferred Operatives",
-      icon: HiOutlineShieldCheck,
+      icon: FaShieldAlt,
     },
     { href: "/contracts", label: "Contracts", icon: IoDocumentTextOutline },
     { href: "/chat", label: "Chat", icon: IoChatbubblesOutline },
@@ -220,7 +220,7 @@ function NavItem({
           )}
         >
           <Icon size={collapsed ? 20 : 18} />
-          {!collapsed && <span className="text-base">{label}</span>}
+          {!collapsed && <span className="text-sm">{label}</span>}
         </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
