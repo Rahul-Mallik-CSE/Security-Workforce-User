@@ -20,11 +20,17 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
-import { IoDocumentTextOutline } from "react-icons/io5";
-
+import {
+  IoDocumentTextOutline,
+  IoChatbubblesOutline,
+  IoGridOutline,
+} from "react-icons/io5";
+import { RiBriefcaseLine, RiMapPinLine } from "react-icons/ri";
+import { HiOutlineShieldCheck } from "react-icons/hi";
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import { FiSettings } from "react-icons/fi";
+import { BiSupport, BiUserPlus } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
-import { MdOutlineCancelPresentation } from "react-icons/md";
-import { GiConfirmed } from "react-icons/gi";
 import LogoutModal from "./LogOutModal";
 
 // import { logout } from "@/service/authService";
@@ -60,6 +66,27 @@ function DashboardSidebarContent() {
 
   const isCollapsed = state === "collapsed";
 
+  const navItems = [
+    { href: "/", label: "Dashboard", icon: IoGridOutline },
+    { href: "/job-management", label: "Job Management", icon: RiBriefcaseLine },
+    {
+      href: "/preferred-operatives",
+      label: "Preferred Operatives",
+      icon: HiOutlineShieldCheck,
+    },
+    { href: "/contracts", label: "Contracts", icon: IoDocumentTextOutline },
+    { href: "/chat", label: "Chat", icon: IoChatbubblesOutline },
+    {
+      href: "/operatives-tracker",
+      label: "Operatives Tracker",
+      icon: RiMapPinLine,
+    },
+    { href: "/payroll", label: "Payroll", icon: AiOutlineDollarCircle },
+    { href: "/settings", label: "Settings", icon: FiSettings },
+    { href: "/support", label: "Support", icon: BiSupport },
+    { href: "/my-referral-user", label: "My Referral User", icon: BiUserPlus },
+  ];
+
   return (
     <>
       {/* Mobile menu button */}
@@ -69,22 +96,27 @@ function DashboardSidebarContent() {
       <Sidebar className="border-r-0  " collapsible="icon">
         <SidebarContent className="bg-white">
           <div
-            className={`flex items-center justify-center  px-0 md:px-2 py-6 relative ${
+            className={`flex items-center justify-center  px-0 md:px-4 py-6 relative ${
               isCollapsed ? "px-2" : "gap-2"
             }`}
           >
-            <div className="flex gap-2">
-              <div className="rounded-full p-1 bg-blue-100">
-                <FaUserAlt className="h-4 w-4" />
-              </div>
-              {!isCollapsed && <h1 className="font-bold text-base">ByeWind</h1>}
+            <div className="flex items-center gap-3">
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={48}
+                  height={48}
+                  className="rounded-xl object-contain"
+                />
+              </Link>
+              {!isCollapsed && (
+                <h1 className="font-bold text-base">Securiverse</h1>
+              )}
             </div>
+
             {/* Collapse button for desktop */}
-            <div
-              className={`absolute top-1 hidden md:block ${
-                isCollapsed ? "right-0" : "right-0"
-              }`}
-            >
+            <div className={`absolute top-1 hidden md:block right-0`}>
               <SidebarTrigger />
             </div>
           </div>
@@ -98,59 +130,56 @@ function DashboardSidebarContent() {
               <p className="text-xs text-gray-600 pl-4 pt-2">Dashboard</p>
             )}
 
-            <NavItem
-              href="/"
-              icon={IoDocumentTextOutline}
-              label="Enquiries"
-              active={pathname === "/"}
-              collapsed={isCollapsed}
-            />
-
-            <NavItem
-              href="/confirmed-orders"
-              icon={GiConfirmed}
-              label="Confirmed Orders"
-              active={
-                pathname === "/confirmed-orders" ||
-                pathname.startsWith("/confirmed-orders")
-              }
-              collapsed={isCollapsed}
-            />
-
-            <NavItem
-              href="/cancelled-orders"
-              icon={MdOutlineCancelPresentation}
-              label="Cancelled Orders"
-              active={
-                pathname === "/cancelled-orders" ||
-                pathname.startsWith("/cancelled-orders")
-              }
-              collapsed={isCollapsed}
-            />
+            {navItems.map((item) => (
+              <NavItem
+                key={item.href}
+                href={item.href}
+                icon={item.icon}
+                label={item.label}
+                active={
+                  pathname === item.href || pathname.startsWith(item.href + "/")
+                }
+                collapsed={isCollapsed}
+              />
+            ))}
           </SidebarMenu>
         </SidebarContent>
-
-        <SidebarFooter className={`bg-white  ${isCollapsed ? "px-0" : "px-6"}`}>
-          {/* <div
-            className={`flex items-center justify-center px-0 md:px-2 py-6 relative ${
-              isCollapsed ? "px-2" : "gap-2"
-            }`}
-          >
-            <div className="flex gap-2">
-              <Link href={"/"}>
+        <SidebarFooter className={`bg-white  ${isCollapsed ? "px-2" : "px-6"}`}>
+          <div className={`${isCollapsed ? "w-full" : "w-full"} py-4`}>
+            {!isCollapsed ? (
+              <div className="bg-blue-50 rounded-lg p-3 flex items-center gap-4">
                 <Image
-                  src="/logo/plant-logo.png"
-                  alt="LA Plant Hire Logo"
-                  width={34}
-                  height={34}
-                  className="object-contain"
+                  src="/logo.png"
+                  alt="profile"
+                  width={44}
+                  height={44}
+                  className="rounded-full object-cover"
                 />
-              </Link>
-              {!isCollapsed && (
-                <h1 className="font-bold text-base">LA PLANT HIRE</h1>
-              )}
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-base font-semibold">Jhon Marcel</p>
+                      <p className="text-sm text-gray-400">Premium</p>
+                    </div>
+                    <div className="text-gray-500">▾</div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center justify-center py-2">
+                <div className="rounded-full p-1 bg-blue-100">
+                  <FaUserAlt className="h-4 w-4" />
+                </div>
+              </div>
+            )}
+
+            <div className="mt-4">
+              <button className="w-full bg-white border border-blue-100 rounded-lg py-3 flex items-center justify-center gap-3 text-blue-800 font-medium">
+                <span className="text-xl">👑</span>
+                {!isCollapsed && <span>Upgrade Plan</span>}
+              </button>
             </div>
-          </div> */}
+          </div>
         </SidebarFooter>
       </Sidebar>
       <LogoutModal
@@ -189,8 +218,8 @@ function NavItem({
               ? "flex items-center justify-center px-2 py-3 transition-colors rounded-full w-12 h-12 mx-auto"
               : "flex items-center gap-3 px-4 py-3 transition-colors rounded-md",
             active
-              ? "bg-orange-100 text-orange-500 hover:bg-orange-100! hover:text-orange-500! font-medium"
-              : "bg-transparent text-black hover:bg-orange-50! hover:text-orange-500! font-medium"
+              ? "bg-orange-500 text-white hover:bg-orange-600 font-medium"
+              : "bg-transparent text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium"
           )}
         >
           <Icon size={collapsed ? 20 : 18} />
