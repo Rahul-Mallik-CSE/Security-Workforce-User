@@ -89,10 +89,12 @@ export default function CustomTable<T extends { id: string }>({
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50 border-b border-gray-200 ">
-              {columns.map((column) => (
+              {columns.map((column, index) => (
                 <TableHead
                   key={column.key}
-                  className="text-gray-600 font-semibold text-sm py-4"
+                  className={`text-gray-600 font-semibold text-sm py-4 ${
+                    index === 0 ? "pl-8" : ""
+                  }`}
                   style={{ width: column.width }}
                 >
                   {column.label}
@@ -106,8 +108,11 @@ export default function CustomTable<T extends { id: string }>({
                 key={item.id}
                 className="border-b border-gray-100 hover:bg-gray-50"
               >
-                {columns.map((column) => (
-                  <TableCell key={column.key} className="py-4 px-2 text-sm">
+                {columns.map((column, index) => (
+                  <TableCell
+                    key={column.key}
+                    className={`py-4 px-2 text-sm ${index === 0 ? "pl-8" : ""}`}
+                  >
                     {renderCell
                       ? renderCell(item, column.key)
                       : String(item[column.key as keyof T])}
