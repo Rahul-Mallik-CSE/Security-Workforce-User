@@ -8,6 +8,8 @@ import { TableColumn, ReferralUserData } from "@/types/AllTypes";
 import { myReferralData } from "@/data/MyReferralData";
 import { Eye, Trash2 } from "lucide-react";
 import UserDetailsModal from "@/components/MyReferralComponents/UserDetailsModal";
+import DeleteModal from "@/components/CommonComponents/DeleteModal";
+import { Button } from "@/components/ui/button";
 
 const MyReferralUserPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,6 +17,10 @@ const MyReferralUserPage = () => {
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [userToDelete, setUserToDelete] = useState<ReferralUserData | null>(
+    null
+  );
 
   const columns: TableColumn[] = [
     { key: "userName", label: "User Name", width: "20%" },
@@ -37,16 +43,24 @@ const MyReferralUserPage = () => {
     setIsModalOpen(true);
   };
 
-  const handleDeleteUser = (userId: string) => {
-    console.log("Delete user:", userId);
-    // Add delete logic here
+  const handleDeleteUser = (user: ReferralUserData) => {
+    setUserToDelete(user);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (userToDelete) {
+      console.log("Deleting user:", userToDelete.id);
+      // Add actual delete logic here (e.g., API call, state update)
+      setUserToDelete(null);
+    }
   };
 
   const renderCell = (item: ReferralUserData, columnKey: string) => {
     if (columnKey === "status") {
       return (
         <span
-          className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${
+          className={`inline-flex px-3 py-1 rounded-lg text-sm font-medium ${
             item.status === "Earned"
               ? "bg-blue-100 text-blue-700"
               : "bg-yellow-100 text-yellow-700"
@@ -60,20 +74,20 @@ const MyReferralUserPage = () => {
     if (columnKey === "action") {
       return (
         <div className="flex items-center gap-3">
-          <button
+          <Button
             onClick={() => handleViewUser(item)}
-            className="text-gray-600 hover:text-blue-600 transition-colors"
+            className="text-gray-600 bg-transparent hover:bg-gray-50 hover:text-blue-600 transition-colors"
             aria-label="View details"
           >
             <Eye className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => handleDeleteUser(item.id)}
-            className="text-gray-600 hover:text-red-600 transition-colors"
+          </Button>
+          <Button
+            onClick={() => handleDeleteUser(item)}
+            className="text-gray-600 bg-transparent hover:bg-gray-50 hover:text-red-600 transition-colors"
             aria-label="Delete user"
           >
             <Trash2 className="w-5 h-5" />
-          </button>
+          </Button>
         </div>
       );
     }
@@ -123,6 +137,15 @@ const MyReferralUserPage = () => {
         open={isModalOpen}
         onOpenChange={setIsModalOpen}
         user={selectedUser}
+      />
+
+      {/* Delete Confirmation Modal */}
+      <DeleteModal
+        open={isDeleteModalOpen}
+        onOpenChange={setIsDeleteModalOpen}
+        onConfirm={confirmDelete}
+        title="Delete User"
+        itemName={userToDelete?.userName}
       />
     </div>
   );
