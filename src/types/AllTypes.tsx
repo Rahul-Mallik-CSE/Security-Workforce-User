@@ -27,3 +27,24 @@ export interface ReferralUserData {
   address?: string;
   purchaseDate?: string;
 }
+
+export interface OperativeTrackerData {
+  id: string;
+  jobId: string;
+  operativeName: string;
+  jobRole: string;
+  jobDate: string;
+  location: string;
+  status: "Shift Complete" | "On-Duty" | "Not Started";
+  rating: number | null;
+  duration?: string;
+  ratePerHour?: string;
+  checkIn?: string;
+  checkOut?: string;
+}
+
+export interface RatingCategory {
+  id: string;
+  category: string;
+  rating: number;
+}

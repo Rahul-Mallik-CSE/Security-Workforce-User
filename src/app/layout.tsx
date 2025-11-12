@@ -30,12 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         <SidebarProvider>
           <DashboardSidebar />
           <SidebarInset>
-            <div className=" w-full bg-[#F2F7FF]  p-4">
+            <div className="min-h-screen w-full bg-[#F2F7FF]  p-4">
               <NavBar />
               {children}
             </div>

@@ -27,57 +27,67 @@ const UserDetailsModal = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] bg-white">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold">
+          <DialogTitle className="text-xl text-center font-semibold">
             User Details
           </DialogTitle>
         </DialogHeader>
-        <div className="space-y-4 py-4">
+        <div className="py-4 space-y-2">
           {/* User Name */}
-          <div className="space-y-1">
-            <label className="text-sm text-gray-500">User Name</label>
-            <div className="text-base font-medium">{user.userName}</div>
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">
+              User Name :
+            </label>
+            <div className="text-sm text-gray-600">{user.userName}</div>
           </div>
 
           {/* Email */}
-          <div className="space-y-1">
-            <label className="text-sm text-gray-500">Email</label>
-            <div className="text-base font-medium">{user.email}</div>
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">Email :</label>
+            <div className="text-sm text-gray-600">{user.email}</div>
           </div>
 
           {/* Address */}
-          {user.address && (
-            <div className="space-y-1">
-              <label className="text-sm text-gray-500">Address</label>
-              <div className="text-base font-medium">{user.address}</div>
-            </div>
-          )}
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">
+              Address :
+            </label>
+            <div className="text-sm text-gray-600">{user.address || "N/A"}</div>
+          </div>
 
           {/* Join Date */}
-          <div className="space-y-1">
-            <label className="text-sm text-gray-500">Join Date</label>
-            <div className="text-base font-medium">{user.joinDate}</div>
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">
+              Join Date :
+            </label>
+            <div className="text-sm text-gray-600">{user.joinDate}</div>
           </div>
 
           {/* Subscription */}
-          <div className="space-y-1">
-            <label className="text-sm text-gray-500">Subscription</label>
-            <div className="text-base font-medium">{user.subscribed}</div>
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">
+              Subscription :
+            </label>
+            <div className="text-sm text-gray-600">{user.subscribed}</div>
           </div>
 
           {/* Purchase Date */}
-          {user.purchaseDate && (
-            <div className="space-y-1">
-              <label className="text-sm text-gray-500">Purchase Date</label>
-              <div className="text-base font-medium">{user.purchaseDate}</div>
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">
+              Purchase Date :
+            </label>
+            <div className="text-sm text-gray-600">
+              {user.purchaseDate || "N/A"}
             </div>
-          )}
+          </div>
 
           {/* Status */}
-          <div className="space-y-1">
-            <label className="text-sm text-gray-500">Status</label>
+          <div className="flex items-center justify-between py-3 border-b border-gray-200">
+            <label className="text-sm font-medium text-gray-700">
+              Status :
+            </label>
             <div>
               <span
-                className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${
+                className={`inline-flex px-3 py-1 rounded text-xs font-medium ${
                   user.status === "Earned"
                     ? "bg-blue-100 text-blue-700"
                     : "bg-yellow-100 text-yellow-700"
@@ -89,7 +99,7 @@ const UserDetailsModal = ({
           </div>
 
           {/* Message Button */}
-          <div className="pt-4">
+          <div className="pt-6">
             <button className="w-full bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white py-2.5 rounded-lg font-medium transition-colors">
               Message
             </button>
