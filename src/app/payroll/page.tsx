@@ -2,11 +2,12 @@
 
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import CustomTable from "@/components/CommonComponents/CustomTable";
 import { payrollData } from "@/data/PayrollData";
 import { TableColumn, PayrollData } from "@/types/AllTypes";
-import { Search, Eye, Download } from "lucide-react";
+import { Search, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const PayrollPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -52,9 +53,9 @@ const PayrollPage = () => {
             {/* <button className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
               <Eye className="w-4 h-4 text-gray-600" />
             </button> */}
-            <button className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
+            <Button className="p-0.5 bg-transparent hover:bg-gray-100 rounded-md transition-colors">
               <Download className="w-4 h-4 text-gray-600" />
-            </button>
+            </Button>
           </div>
         );
       default:
