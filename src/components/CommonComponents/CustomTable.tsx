@@ -88,7 +88,7 @@ export default function CustomTable<T extends { id: string }>({
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow className="bg-gray-50 border-b border-gray-200">
+            <TableRow className="bg-gray-50 border-b border-gray-200 ">
               {columns.map((column) => (
                 <TableHead
                   key={column.key}

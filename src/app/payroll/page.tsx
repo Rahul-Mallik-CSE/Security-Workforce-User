@@ -36,22 +36,22 @@ const PayrollPage = () => {
     switch (columnKey) {
       case "status":
         return (
-          <span
-            className={`px-4 py-1.5 rounded-full text-xs font-medium ${
+          <div
+            className={`px-2 py-1 w-16 flex justify-center rounded-lg text-xs font-medium ${
               item.status === "Paid"
                 ? "bg-green-100 text-green-700"
                 : "bg-gray-200 text-gray-600"
             }`}
           >
             {item.status}
-          </span>
+          </div>
         );
       case "action":
         return (
           <div className="flex items-center gap-2">
-            <button className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
+            {/* <button className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
               <Eye className="w-4 h-4 text-gray-600" />
-            </button>
+            </button> */}
             <button className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
               <Download className="w-4 h-4 text-gray-600" />
             </button>
