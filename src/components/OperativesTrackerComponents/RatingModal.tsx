@@ -9,8 +9,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import { Star } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { RatingCategory } from "@/types/AllTypes";
+import { Star } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface RatingModalProps {
   open: boolean;
@@ -54,50 +56,57 @@ const RatingModal = ({
             Rate this Operative
           </DialogTitle>
         </DialogHeader>
-        <div className="py-4 space-y-4">
+        <div className="py-4 space-y-3">
           {ratings.map((item) => (
-            <div key={item.id} className="space-y-2">
-              <div className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-black"></span>
-                <span className="text-sm text-gray-700">{item.category}</span>
-              </div>
+            <div key={item.id} className="space-y-1.5">
               <div className="flex items-center gap-2">
-                {[5, 4, 3, 2, 1].map((starValue) => (
-                  <button
-                    key={starValue}
-                    onClick={() => handleRating(item.id, starValue)}
-                    className="relative group"
-                  >
-                    <Star
-                      className={`w-6 h-6 transition-colors ${
-                        item.rating >= starValue
-                          ? "fill-orange-400 text-orange-400"
-                          : "fill-none text-gray-300"
-                      } group-hover:text-orange-400`}
-                    />
-                  </button>
-                ))}
-                <span className="ml-2 text-sm text-gray-500">
-                  {item.rating > 0 ? `${item.rating} ★` : ""}
-                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
+                <span className="text-sm text-gray-800">{item.category}</span>
               </div>
+              <RadioGroup
+                value={item.rating.toString()}
+                onValueChange={(value) =>
+                  handleRating(item.id, parseInt(value))
+                }
+                className="flex items-center gap-4 pl-4"
+              >
+                {[5, 4, 3, 2, 1].map((starValue) => (
+                  <div
+                    key={starValue}
+                    className="flex items-center justify-center gap-1.5"
+                  >
+                    <RadioGroupItem
+                      value={starValue.toString()}
+                      id={`${item.id}-${starValue}`}
+                      className="w-4 h-4 border-orange-400 text-orange-400"
+                    />
+                    <label
+                      htmlFor={`${item.id}-${starValue}`}
+                      className="text-sm font-medium text-gray-600 cursor-pointer flex items-center gap-0.5"
+                    >
+                      {starValue}{" "}
+                      <Star className="w-3 h-3 inline-block fill-orange-400 text-orange-400" />
+                    </label>
+                  </div>
+                ))}
+              </RadioGroup>
             </div>
           ))}
 
           {/* Buttons */}
-          <div className="flex items-center gap-3 pt-4">
-            <button
+          <div className="flex items-center gap-3 pt-6">
+            <Button
               onClick={handleLater}
               className="flex-1 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-2.5 rounded-lg font-medium transition-colors"
             >
               Later
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={handleSubmit}
               className="flex-1 bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white py-2.5 rounded-lg font-medium transition-colors"
             >
               Submit
-            </button>
+            </Button>
           </div>
         </div>
       </DialogContent>
