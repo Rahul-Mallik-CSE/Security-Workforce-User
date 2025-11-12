@@ -61,7 +61,7 @@ const OperativesTrackerPage = () => {
 
       return (
         <span
-          className={`inline-flex px-3 py-1 rounded text-xs font-medium ${statusColor}`}
+          className={`inline-flex px-3 py-1 rounded-lg w-24  justify-center text-xs font-medium ${statusColor}`}
         >
           {item.status}
         </span>
