@@ -16,3 +16,14 @@ export interface PayrollData {
   date: string;
   status: "Paid" | "Unpaid";
 }
+
+export interface ReferralUserData {
+  id: string;
+  userName: string;
+  email: string;
+  joinDate: string;
+  subscribed: "Yes" | "No";
+  status: "Earned" | "Pending";
+  address?: string;
+  purchaseDate?: string;
+}
