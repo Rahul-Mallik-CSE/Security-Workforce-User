@@ -8,6 +8,7 @@ import CustomTable from "@/components/CommonComponents/CustomTable";
 import { TableColumn, PreferredOperativeData } from "@/types/AllTypes";
 import { operativesDetailsData } from "@/data/OperativesDetailsData";
 import OperativesDetailsModal from "@/components/PreferredOperativesComponents/OperativesDetailsModal";
+import { Button } from "@/components/ui/button";
 
 const PreferredOperativesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,10 +40,6 @@ const PreferredOperativesPage = () => {
     setIsDetailsModalOpen(true);
   };
 
-  const handleMessage = (operative: PreferredOperativeData) => {
-    console.log("Message operative:", operative.operativeName);
-  };
-
   const handleDelete = (operative: PreferredOperativeData) => {
     console.log("Delete operative:", operative.id);
   };
@@ -55,17 +52,17 @@ const PreferredOperativesPage = () => {
           : "bg-red-100 text-red-700";
 
       return (
-        <span
-          className={`inline-flex px-3 py-1 rounded text-xs font-medium ${statusColor}`}
+        <div
+          className={`inline-flex w-20 justify-center px-3 py-1 rounded text-xs font-medium ${statusColor}`}
         >
           {item.status}
-        </span>
+        </div>
       );
     }
 
     if (columnKey === "rating") {
       return (
-        <div className="flex items-center gap-1">
+        <div className="flex  items-center gap-1">
           <Star className="w-4 h-4 fill-orange-400 text-orange-400" />
           <span className="text-sm font-medium">{item.rating}</span>
         </div>
@@ -75,27 +72,21 @@ const PreferredOperativesPage = () => {
     if (columnKey === "action") {
       return (
         <div className="flex items-center gap-2">
-          <button
+          <Button
             onClick={() => handleViewDetails(item)}
-            className="p-1.5 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
+            className="p-1.5 rounded-full bg-transparent hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
             aria-label="View details"
           >
-            <Eye className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => handleMessage(item)}
-            className="p-1.5 rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
-            aria-label="Message"
-          >
             <MessageSquare className="w-5 h-5" />
-          </button>
-          <button
+          </Button>
+
+          <Button
             onClick={() => handleDelete(item)}
-            className="p-1.5 rounded-full hover:bg-gray-100 text-gray-600 hover:text-red-600 transition-colors"
+            className="p-1.5 rounded-full bg-transparent hover:bg-gray-100 text-gray-600 hover:text-red-600 transition-colors"
             aria-label="Delete"
           >
             <Trash2 className="w-5 h-5" />
-          </button>
+          </Button>
         </div>
       );
     }
