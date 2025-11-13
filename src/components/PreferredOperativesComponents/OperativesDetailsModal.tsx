@@ -22,7 +22,7 @@ const OperativesDetailsModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[350px] bg-white">
+      <DialogContent className="sm:max-w-[450px] bg-white">
         <DialogHeader className="space-y-4">
           {/* Profile Image */}
           <div className="flex justify-center pt-2">
@@ -164,7 +164,7 @@ const OperativesDetailsModal = ({
 
           {/* Message Button */}
           <div className="pt-4 pb-2">
-            <button className="w-full bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white py-2.5 rounded-lg font-medium transition-colors">
+            <button className="w-full cursor-pointer bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white py-2.5 rounded-lg font-medium transition-colors">
               Message
             </button>
           </div>
