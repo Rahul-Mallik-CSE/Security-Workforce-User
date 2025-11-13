@@ -3,11 +3,12 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Eye, MessageSquare, Trash2, Star } from "lucide-react";
+import { Search, MessageSquare, Trash2, Star } from "lucide-react";
 import CustomTable from "@/components/CommonComponents/CustomTable";
 import { TableColumn, PreferredOperativeData } from "@/types/AllTypes";
 import { operativesDetailsData } from "@/data/OperativesDetailsData";
 import OperativesDetailsModal from "@/components/PreferredOperativesComponents/OperativesDetailsModal";
+import DeleteModal from "@/components/CommonComponents/DeleteModal";
 import { Button } from "@/components/ui/button";
 
 const PreferredOperativesPage = () => {
@@ -15,6 +16,9 @@ const PreferredOperativesPage = () => {
   const [selectedOperative, setSelectedOperative] =
     useState<PreferredOperativeData | null>(null);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [operativeToDelete, setOperativeToDelete] =
+    useState<PreferredOperativeData | null>(null);
 
   const columns: TableColumn[] = [
     { key: "operativeId", label: "ID No.", width: "8%" },
@@ -41,7 +45,16 @@ const PreferredOperativesPage = () => {
   };
 
   const handleDelete = (operative: PreferredOperativeData) => {
-    console.log("Delete operative:", operative.id);
+    setOperativeToDelete(operative);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (operativeToDelete) {
+      console.log("Deleting operative:", operativeToDelete.id);
+      // Add actual delete logic here (e.g., API call, state update)
+      setOperativeToDelete(null);
+    }
   };
 
   const renderCell = (item: PreferredOperativeData, columnKey: string) => {
@@ -127,6 +140,15 @@ const PreferredOperativesPage = () => {
         open={isDetailsModalOpen}
         onOpenChange={setIsDetailsModalOpen}
         operative={selectedOperative}
+      />
+
+      {/* Delete Confirmation Modal */}
+      <DeleteModal
+        open={isDeleteModalOpen}
+        onOpenChange={setIsDeleteModalOpen}
+        onConfirm={confirmDelete}
+        title="Delete Operative"
+        itemName={operativeToDelete?.operativeName}
       />
     </div>
   );
