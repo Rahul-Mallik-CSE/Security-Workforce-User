@@ -102,11 +102,11 @@ export default function CustomTable<T extends { id: string }>({
               ))}
             </TableRow>
           </TableHeader>
-          <TableBody className="mx-8">
+          <TableBody className="mx-8 w-full">
             {currentData.map((item) => (
               <TableRow
                 key={item.id}
-                className="border-b border-gray-100 hover:bg-gray-50"
+                className="border-b border-gray-100 hover:bg-gray-50 "
               >
                 {columns.map((column, index) => (
                   <TableCell

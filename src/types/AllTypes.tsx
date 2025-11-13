@@ -66,3 +66,17 @@ export interface PreferredOperativeData {
   firearms?: string[];
   otherNotes?: string;
 }
+
+export interface JobManagementData {
+  id: string;
+  jobId: string;
+  role: string;
+  location: string;
+  date: string;
+  duration: string;
+  startTime: string;
+  payRate: string;
+  required: number;
+  selected: number;
+  status: "Tasked" | "In Progress" | "Untasked";
+}
