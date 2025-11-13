@@ -53,11 +53,11 @@ const JobManagementPage = () => {
       }
 
       return (
-        <span
-          className={`inline-flex px-3 py-1 rounded text-xs font-medium ${statusColor}`}
+        <div
+          className={`inline-flex w-20 justify-center px-3 py-1 rounded text-xs font-medium ${statusColor}`}
         >
           {item.status}
-        </span>
+        </div>
       );
     }
 
