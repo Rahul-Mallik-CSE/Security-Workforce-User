@@ -80,3 +80,28 @@ export interface JobManagementData {
   selected: number;
   status: "Tasked" | "In Progress" | "Untasked";
 }
+
+export interface JobDetailsData {
+  id: string;
+  jobTitle: string;
+  location: string;
+  startDateTime: string;
+  endDateTime: string;
+  duration: string;
+  licenseRequirements: string;
+  payRateType: string;
+  payAmount: string;
+  minimumRating: string;
+  usePreferredOperatives: string;
+  description: string;
+}
+
+export interface ApplicantData {
+  id: string;
+  operativeName: string;
+  jobRole: string;
+  rating: number;
+  jobExperience: string;
+  profileImage?: string;
+  status?: "selected" | "pending";
+}

@@ -1,6 +1,10 @@
 /** @format */
 
-import { JobManagementData } from "@/types/AllTypes";
+import {
+  JobManagementData,
+  JobDetailsData,
+  ApplicantData,
+} from "@/types/AllTypes";
 
 export const jobManagementData: JobManagementData[] = [
   {
@@ -158,5 +162,150 @@ export const jobManagementData: JobManagementData[] = [
     required: 12,
     selected: 12,
     status: "In Progress",
+  },
+];
+
+// Job Details Data
+export const jobDetailsData: JobDetailsData = {
+  id: "1",
+  jobTitle: "Night Security Shift",
+  location: "Sydney CBD",
+  startDateTime: "15 Sep, 2025 - 18:30",
+  endDateTime: "15 Sep, 2025 - 07:30",
+  duration: "8 hours",
+  licenseRequirements: "Security Operations",
+  payRateType: "Negotiate",
+  payAmount: "Negotiate",
+  minimumRating: "4.0",
+  usePreferredOperatives: "Yes",
+  description:
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.",
+};
+
+// Applicants Data
+export const applicantsData: ApplicantData[] = [
+  {
+    id: "1",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "pending",
+  },
+  {
+    id: "2",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.0,
+    jobExperience: "5+ year",
+    status: "pending",
+  },
+  {
+    id: "3",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "pending",
+  },
+  {
+    id: "4",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.0,
+    jobExperience: "5+ year",
+    status: "pending",
+  },
+  {
+    id: "5",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "pending",
+  },
+  {
+    id: "6",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.0,
+    jobExperience: "5+ year",
+    status: "pending",
+  },
+];
+
+// Selected Applicants Data
+export const selectedApplicantsData: ApplicantData[] = [
+  {
+    id: "1",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "2",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "3",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "4",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "5",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "6",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "7",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "8",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
+  },
+  {
+    id: "9",
+    operativeName: "Jhon Noel",
+    jobRole: "Security Guard",
+    rating: 4.7,
+    jobExperience: "5+ year",
+    status: "selected",
   },
 ];

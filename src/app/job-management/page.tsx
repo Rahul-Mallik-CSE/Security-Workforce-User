@@ -3,12 +3,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, Eye, Trash2 } from "lucide-react";
 import CustomTable from "@/components/CommonComponents/CustomTable";
 import { TableColumn, JobManagementData } from "@/types/AllTypes";
 import { jobManagementData } from "@/data/JobManagementData";
 
 const JobManagementPage = () => {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
   const columns: TableColumn[] = [
@@ -34,7 +36,7 @@ const JobManagementPage = () => {
   );
 
   const handleViewJob = (job: JobManagementData) => {
-    console.log("View job:", job.id);
+    router.push(`/job-management/${job.id}`);
   };
 
   const handleDeleteJob = (job: JobManagementData) => {
