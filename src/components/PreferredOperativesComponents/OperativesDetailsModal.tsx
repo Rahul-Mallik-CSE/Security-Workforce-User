@@ -112,46 +112,58 @@ const OperativesDetailsModal = ({
             </div>
           </div>
 
-          {/* Security Operations and Accreditations */}
-          <div className="py-3 border-b border-gray-200">
-            <label className="text-sm font-medium text-gray-700 block mb-2">
-              Security Operations and Accreditations
+          {/* All Licences and Accreditations */}
+          <div className="py-3">
+            <label className="text-sm font-semibold text-gray-900 block mb-3">
+              All Licences and Accreditations
             </label>
-            <div className="space-y-1">
+            <div className="space-y-2">
               {operative.securityOperations?.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
-                  <span className="text-sm text-gray-600">{item}</span>
+                <div key={index} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-black mt-1.5 shrink-0"></span>
+                  <span className="text-sm text-gray-700">{item}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Firearms */}
-          <div className="py-3 border-b border-gray-200">
-            <label className="text-sm font-medium text-gray-700 block mb-2">
-              Firearms
-            </label>
-            <div className="space-y-1">
               {operative.firearms?.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
-                  <span className="text-sm text-gray-600">{item}</span>
+                <div key={index} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-black mt-1.5 shrink-0"></span>
+                  <span className="text-sm text-gray-700">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Other Notes */}
-          <div className="py-3 border-b border-gray-200">
-            <label className="text-sm font-medium text-gray-700 block mb-2">
-              Other Notes
-            </label>
-            <div className="text-sm text-gray-600">{operative.otherNotes}</div>
+          {/* Add Note */}
+          <div className="py-3">
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-sm font-semibold text-gray-900">
+                Add Note :
+              </label>
+              <button className="text-gray-400 hover:text-gray-600">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <input
+              type="text"
+              placeholder="write a sort note"
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200"
+            />
           </div>
 
           {/* Message Button */}
-          <div className="pt-6">
+          <div className="pt-4 pb-2">
             <button className="w-full bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white py-2.5 rounded-lg font-medium transition-colors">
               Message
             </button>
