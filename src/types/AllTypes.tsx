@@ -48,3 +48,21 @@ export interface RatingCategory {
   category: string;
   rating: number;
 }
+
+export interface PreferredOperativeData {
+  id: string;
+  operativeId: string;
+  operativeName: string;
+  licences: string;
+  accreditations: string;
+  rating: number;
+  status: "Interested" | "Hired";
+  profileImage?: string;
+  state?: string;
+  jobExperience?: string;
+  licenceNumber?: string;
+  licenceExpiryDate?: string;
+  securityOperations?: string[];
+  firearms?: string[];
+  otherNotes?: string;
+}
