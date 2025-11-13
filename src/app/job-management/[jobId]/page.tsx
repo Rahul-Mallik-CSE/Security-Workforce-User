@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { jobDetailsData, applicantsData } from "@/data/JobManagementData";
 import { MessageSquare, Star } from "lucide-react";
+import JobRequirementsCard from "@/components/JobManagementComponents/JobRequirementsCard";
 
 const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
   const router = useRouter();
@@ -22,138 +23,22 @@ const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
   };
 
   return (
-    <div className="w-full p-6 bg-white min-h-screen">
-      <div className="max-w-[1400px] mx-auto">
-        {/* Header */}
-        <div className="mb-6 flex justify-between items-center">
-          <h1 className="text-2xl font-semibold text-[#1e293b]">Job Details</h1>
-          <button
-            onClick={handleViewSelected}
-            className="px-6 py-2 bg-[#f97316] text-white rounded-md hover:bg-[#ea580c] transition-colors"
-          >
-            View Selected Applicants
-          </button>
-        </div>
-
+    <div className="max-w-[2000px] py-6  min-h-screen">
+      {/* Header */}
+      <div className="mb-6 flex justify-between items-center">
+        <h1 className="text-2xl font-semibold text-[#1e293b]">Job Details</h1>
+        <button
+          onClick={handleViewSelected}
+          className="px-6 py-2 bg-[#f97316] text-white rounded-md hover:bg-[#ea580c] transition-colors"
+        >
+          View Selected Applicants
+        </button>
+      </div>
+      <div className="bg-white mx-auto p-6 rounded-xl">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Column - Job Requirements */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-[#1e293b] mb-6">
-              Job Requirements
-            </h2>
-            <div className="space-y-4">
-              {/* Job Title */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Job Title
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.jobTitle}
-                </span>
-              </div>
-
-              {/* Location */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Location
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.location}
-                </span>
-              </div>
-
-              {/* Start Date & Time */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Start Date & Time
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.startDateTime}
-                </span>
-              </div>
-
-              {/* End Date & Time */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  End Date & Time
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.endDateTime}
-                </span>
-              </div>
-
-              {/* Duration */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Duration
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.duration}
-                </span>
-              </div>
-
-              {/* License Requirements */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  License Requirements
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.licenseRequirements}
-                </span>
-              </div>
-
-              {/* Pay Rate Type */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Pay Rate Type
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.payRateType}
-                </span>
-              </div>
-
-              {/* Pay Amount */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Pay Amount
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.payAmount}
-                </span>
-              </div>
-
-              {/* Minimum Rating */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Minimum Rating
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.minimumRating}
-                </span>
-              </div>
-
-              {/* Use Preferred Operatives */}
-              <div className="flex justify-between items-start pb-4 border-b border-gray-200">
-                <span className="text-gray-600 text-sm font-medium">
-                  Use Preferred Operatives
-                </span>
-                <span className="text-[#1e293b] text-sm font-medium text-right">
-                  {jobDetailsData.usePreferredOperatives}
-                </span>
-              </div>
-
-              {/* Description */}
-              <div className="pb-4">
-                <span className="text-gray-600 text-sm font-medium block mb-2">
-                  Description
-                </span>
-                <p className="text-[#1e293b] text-sm leading-relaxed">
-                  {jobDetailsData.description}
-                </p>
-              </div>
-            </div>
-          </div>
+          <JobRequirementsCard jobDetails={jobDetailsData} />
 
           {/* Right Column - Applicants View */}
           <div className="bg-white border border-gray-200 rounded-lg p-6">
