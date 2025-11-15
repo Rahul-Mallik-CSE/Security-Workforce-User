@@ -4,6 +4,13 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Calendar, Clock, MapPin } from "lucide-react";
 
 const CreateNewJobForm = () => {
@@ -160,18 +167,21 @@ const CreateNewJobForm = () => {
             <label className="block text-sm font-semibold text-black mb-2">
               Pay Type
             </label>
-            <select
+            <Select
               value={formData.payType}
-              onChange={(e) =>
-                setFormData({ ...formData, payType: e.target.value })
+              onValueChange={(value) =>
+                setFormData({ ...formData, payType: value })
               }
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
             >
-              <option value="">Select rate amount type</option>
-              <option value="nominated">Nominated</option>
-              <option value="award">Award</option>
-              <option value="negotiation">By Negotiation</option>
-            </select>
+              <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <SelectValue placeholder="Select rate amount type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="nominated">Nominated</SelectItem>
+                <SelectItem value="award">Award</SelectItem>
+                <SelectItem value="negotiation">By Negotiation</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div>
             <label className="block text-sm font-semibold text-black mb-2">
@@ -195,17 +205,21 @@ const CreateNewJobForm = () => {
                   className="w-full pl-7 pr-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <select
-                value={formData.payAmount}
-                onChange={(e) =>
-                  setFormData({ ...formData, payAmount: e.target.value })
+              <Select
+                value={formData.payAmount || "/hour"}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, payAmount: value })
                 }
-                className="px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-700 bg-orange-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">/hour</option>
-                <option value="/day">/day</option>
-                <option value="/week">/week</option>
-              </select>
+                <SelectTrigger className="px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-700 bg-orange-50">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="/hour">/hour</SelectItem>
+                  <SelectItem value="/day">/day</SelectItem>
+                  <SelectItem value="/week">/week</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
@@ -231,18 +245,21 @@ const CreateNewJobForm = () => {
           <label className="block text-sm font-semibold text-black mb-2">
             Licence Requirements
           </label>
-          <select
+          <Select
             value={formData.licenseRequirements}
-            onChange={(e) =>
-              setFormData({ ...formData, licenseRequirements: e.target.value })
+            onValueChange={(value) =>
+              setFormData({ ...formData, licenseRequirements: value })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select Licence Requirements</option>
-            <option value="security">Security Operations</option>
-            <option value="firearm">Firearm License</option>
-            <option value="crowd">Crowd Control</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select Licence Requirements" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="security">Security Operations</SelectItem>
+              <SelectItem value="firearm">Firearm License</SelectItem>
+              <SelectItem value="crowd">Crowd Control</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Minimum Rating Requirement */}
@@ -250,21 +267,24 @@ const CreateNewJobForm = () => {
           <label className="block text-sm font-semibold text-black mb-2">
             Minimum Rating Requirement
           </label>
-          <select
+          <Select
             value={formData.minimumRating}
-            onChange={(e) =>
-              setFormData({ ...formData, minimumRating: e.target.value })
+            onValueChange={(value) =>
+              setFormData({ ...formData, minimumRating: value })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select minimum rating</option>
-            <option value="none">No Minimum Required</option>
-            <option value="1">⭐ 1</option>
-            <option value="2">⭐ 2</option>
-            <option value="3">⭐ 3</option>
-            <option value="4">⭐ 4</option>
-            <option value="5">⭐ 5</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select minimum rating" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">No Minimum Required</SelectItem>
+              <SelectItem value="1">⭐ 1</SelectItem>
+              <SelectItem value="2">⭐ 2</SelectItem>
+              <SelectItem value="3">⭐ 3</SelectItem>
+              <SelectItem value="4">⭐ 4</SelectItem>
+              <SelectItem value="5">⭐ 5</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Accreditation Requirements */}
@@ -272,21 +292,24 @@ const CreateNewJobForm = () => {
           <label className="block text-sm font-semibold text-black mb-2">
             Accreditation Requirements
           </label>
-          <select
+          <Select
             value={formData.accreditationRequirements}
-            onChange={(e) =>
+            onValueChange={(value) =>
               setFormData({
                 ...formData,
-                accreditationRequirements: e.target.value,
+                accreditationRequirements: value,
               })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select Accreditation requirements</option>
-            <option value="first-aid">First Aid Certificate</option>
-            <option value="cpr">CPR Certified</option>
-            <option value="training">Security Training</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select Accreditation requirements" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="first-aid">First Aid Certificate</SelectItem>
+              <SelectItem value="cpr">CPR Certified</SelectItem>
+              <SelectItem value="training">Security Training</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Use Preferred Guards List */}
@@ -294,17 +317,20 @@ const CreateNewJobForm = () => {
           <label className="block text-sm font-semibold text-black mb-2">
             Use Preferred Guards List
           </label>
-          <select
+          <Select
             value={formData.usePreferredGuards}
-            onChange={(e) =>
-              setFormData({ ...formData, usePreferredGuards: e.target.value })
+            onValueChange={(value) =>
+              setFormData({ ...formData, usePreferredGuards: value })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select preferred guards list or no</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select preferred guards list or no" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="yes">Yes</SelectItem>
+              <SelectItem value="no">No</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Gender Requirement */}
@@ -313,18 +339,21 @@ const CreateNewJobForm = () => {
             Gender Requirement{" "}
             <span className="text-gray-400 font-normal">(Optional)</span>
           </label>
-          <select
+          <Select
             value={formData.genderRequirement}
-            onChange={(e) =>
-              setFormData({ ...formData, genderRequirement: e.target.value })
+            onValueChange={(value) =>
+              setFormData({ ...formData, genderRequirement: value })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select required gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="any">Any</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select required gender" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="male">Male</SelectItem>
+              <SelectItem value="female">Female</SelectItem>
+              <SelectItem value="any">Any</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Language Required */}
@@ -332,18 +361,21 @@ const CreateNewJobForm = () => {
           <label className="block text-sm font-semibold text-black mb-2">
             Language Required
           </label>
-          <select
+          <Select
             value={formData.languageRequired}
-            onChange={(e) =>
-              setFormData({ ...formData, languageRequired: e.target.value })
+            onValueChange={(value) =>
+              setFormData({ ...formData, languageRequired: value })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select required language</option>
-            <option value="english">English</option>
-            <option value="spanish">Spanish</option>
-            <option value="mandarin">Mandarin</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select required language" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="english">English</SelectItem>
+              <SelectItem value="spanish">Spanish</SelectItem>
+              <SelectItem value="mandarin">Mandarin</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Engagement Type */}
@@ -351,18 +383,21 @@ const CreateNewJobForm = () => {
           <label className="block text-sm font-semibold text-black mb-2">
             Engagement Type
           </label>
-          <select
+          <Select
             value={formData.engagementType}
-            onChange={(e) =>
-              setFormData({ ...formData, engagementType: e.target.value })
+            onValueChange={(value) =>
+              setFormData({ ...formData, engagementType: value })
             }
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
           >
-            <option value="">Select engagement type</option>
-            <option value="casual">Casual</option>
-            <option value="part-time">Part-time</option>
-            <option value="permanent">Permanent</option>
-          </select>
+            <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-400">
+              <SelectValue placeholder="Select engagement type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="casual">Casual</SelectItem>
+              <SelectItem value="part-time">Part-time</SelectItem>
+              <SelectItem value="permanent">Permanent</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Job Description */}
