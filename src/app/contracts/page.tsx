@@ -4,12 +4,14 @@
 
 import { Search, Eye, Download } from "lucide-react";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import CustomTable from "@/components/CommonComponents/CustomTable";
 import { TableColumn, ContractData } from "@/types/AllTypes";
 import { contractData } from "@/data/ContractData";
 import { Button } from "@/components/ui/button";
 
 const ContractsPage = () => {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
   const columns: TableColumn[] = [
@@ -78,7 +80,7 @@ const ContractsPage = () => {
         <div className="flex items-center gap-1">
           <div className="flex items-center">
             <Button
-              onClick={() => console.log("View contract:", item.id)}
+              onClick={() => router.push(`/contracts/${item.id}`)}
               className="p-1.5 bg-transparent rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
               aria-label="View contract"
             >
