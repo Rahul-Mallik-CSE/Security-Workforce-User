@@ -6,6 +6,7 @@ import React from "react";
 import { Star } from "lucide-react";
 import { ApplicantData } from "@/types/AllTypes";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 interface ApplicantsCardProps {
   applicant: ApplicantData;
@@ -21,8 +22,14 @@ const ApplicantsCard = ({
   return (
     <div className="border border-gray-200 rounded-lg p-6 flex flex-col">
       {/* Profile Image */}
-      <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center text-gray-600 font-semibold text-xl">
-        {applicant.operativeName.charAt(0)}
+      <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden">
+        <Image
+          src="/profile-img.png"
+          alt={applicant.operativeName}
+          width={80}
+          height={80}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Operative Name */}
