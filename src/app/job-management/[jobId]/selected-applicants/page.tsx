@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { selectedApplicantsData } from "@/data/JobManagementData";
 import DeleteModal from "@/components/CommonComponents/DeleteModal";
 import ApplicantsCard from "@/components/JobManagementComponents/ApplicantsCard";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SelectedApplicantsPage = ({ params }: { params: { jobId: string } }) => {
@@ -30,8 +31,8 @@ const SelectedApplicantsPage = ({ params }: { params: { jobId: string } }) => {
     setSelectedApplicantId(null);
   };
 
-  const handleBackToDetails = () => {
-    router.push(`/job-management/${params.jobId}`);
+  const handleBack = () => {
+    router.back();
   };
 
   const handleSelect = (id: string) => {
@@ -43,16 +44,17 @@ const SelectedApplicantsPage = ({ params }: { params: { jobId: string } }) => {
     <div className="max-w-[2000px] mx-auto py-6 min-h-screen">
       <div className=" mx-auto">
         {/* Header */}
-        <div className="mb-6 flex justify-between items-center">
+        <div className="mb-6 flex items-center ">
+          <Button
+            onClick={handleBack}
+            className="p-2 bg-transparent hover:bg-gray-100 rounded-full transition-colors"
+            aria-label="Go back"
+          >
+            <ArrowLeft className="w-8 h-6 text-gray-700" />
+          </Button>
           <h1 className="text-3xl font-semibold text-[#1e293b]">
             Selected Applicants
           </h1>
-          <Button
-            onClick={handleBackToDetails}
-            className="px-6 py-2 border border-gray-300 text-[#1e293b] rounded-md hover:bg-gray-50 transition-colors"
-          >
-            Back to Job Details
-          </Button>
         </div>
 
         {/* Applicants Grid */}
