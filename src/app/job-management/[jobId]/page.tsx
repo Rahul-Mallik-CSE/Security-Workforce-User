@@ -26,7 +26,7 @@ const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
     <div className="max-w-[2000px] py-6  min-h-screen">
       {/* Header */}
       <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-2xl font-semibold text-[#1e293b]">Job Details</h1>
+        <h1 className="text-3xl font-semibold text-black">Job Details</h1>
         <button
           onClick={handleViewSelected}
           className="px-6 py-2 bg-[#f97316] text-white rounded-md hover:bg-[#ea580c] transition-colors"
@@ -42,7 +42,7 @@ const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
 
           {/* Right Column - Applicants View */}
           <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-[#1e293b] mb-6">
+            <h2 className="text-2xl text-center font-semibold text-black mb-6">
               Applicants View
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

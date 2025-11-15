@@ -91,7 +91,7 @@ const JobManagementPage = () => {
     <div className="max-w-[2000px] mx-auto py-6">
       {/* Header with Title, Search and Create Button */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-        <h1 className="text-2xl font-semibold">Job Management</h1>
+        <h1 className="text-3xl font-semibold">Job Management</h1>
 
         <div className="flex flex-col md:flex-row gap-3 items-start md:items-center">
           {/* Search Bar */}
