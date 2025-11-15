@@ -8,6 +8,7 @@ import { jobDetailsData, applicantsData } from "@/data/JobManagementData";
 import JobRequirementsCard from "@/components/JobManagementComponents/JobRequirementsCard";
 import ApplicantsCard from "@/components/JobManagementComponents/ApplicantsCard";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
   const router = useRouter();
@@ -23,11 +24,24 @@ const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
     router.push(`/job-management/${params.jobId}/selected-applicants`);
   };
 
+  const handleBack = () => {
+    router.push("/job-management");
+  };
+
   return (
     <div className="max-w-[2000px] mx-auto py-6  min-h-screen">
       {/* Header */}
       <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-semibold text-black">Job Details</h1>
+        <div className="flex items-center">
+          <Button
+            onClick={handleBack}
+            className="p-2 bg-transparent hover:bg-gray-100 rounded-full transition-colors"
+            aria-label="Go back"
+          >
+            <ArrowLeft className="w-8 h-6 text-gray-700" />
+          </Button>
+          <h1 className="text-3xl font-semibold text-black">Job Details</h1>
+        </div>
         <Button
           onClick={handleViewSelected}
           className="px-6 py-2 bg-[#f97316] text-white rounded-md hover:bg-[#ea580c] transition-colors"
