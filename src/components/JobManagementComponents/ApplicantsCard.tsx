@@ -3,8 +3,9 @@
 "use client";
 
 import React from "react";
-import { MessageSquare, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { ApplicantData } from "@/types/AllTypes";
+import { Button } from "../ui/button";
 
 interface ApplicantsCardProps {
   applicant: ApplicantData;
@@ -18,47 +19,56 @@ const ApplicantsCard = ({
   onSelect,
 }: ApplicantsCardProps) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-4 flex flex-col items-center text-center">
+    <div className="border border-gray-200 rounded-lg p-6 flex flex-col">
       {/* Profile Image */}
-      <div className="w-16 h-16 bg-gray-300 rounded-full mb-3 flex items-center justify-center text-gray-600 font-semibold text-lg">
+      <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center text-gray-600 font-semibold text-xl">
         {applicant.operativeName.charAt(0)}
       </div>
 
       {/* Operative Name */}
-      <h3 className="text-sm font-semibold text-[#1e293b] mb-1">
-        {applicant.operativeName}
-      </h3>
-
-      {/* Job Role */}
-      <p className="text-xs text-gray-600 mb-2">{applicant.jobRole}</p>
-
-      {/* Rating */}
-      <div className="flex items-center gap-1 mb-2">
-        <Star className="w-4 h-4 fill-[#f97316] text-[#f97316]" />
-        <span className="text-sm font-medium text-[#1e293b]">
-          {applicant.rating}
+      <div className="flex justify-between items-start mb-3">
+        <span className="text-sm font-semibold text-black">
+          Operative Name :
+        </span>
+        <span className="text-sm text-gray-600 text-right">
+          {applicant.operativeName}
         </span>
       </div>
 
+      {/* Rating */}
+      <div className="flex justify-between items-start mb-3">
+        <span className="text-sm font-semibold text-black">Rating :</span>
+        <div className="flex items-center gap-1">
+          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+          <span className="text-sm text-gray-600">{applicant.rating}</span>
+        </div>
+      </div>
+
       {/* Job Experience */}
-      <p className="text-xs text-gray-600 mb-4">{applicant.jobExperience}</p>
+      <div className="flex justify-between items-start mb-6">
+        <span className="text-sm font-semibold text-black">
+          Job Experience :
+        </span>
+        <span className="text-sm text-gray-600 text-right">
+          {applicant.jobExperience}
+        </span>
+      </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-2 w-full">
-        <button className="flex-1 px-3 py-2 border border-gray-300 rounded-md flex items-center justify-center gap-2 text-xs text-gray-700 hover:bg-gray-50 transition-colors">
-          <MessageSquare className="w-3 h-3" />
+      <div className="flex gap-3 w-full mt-auto">
+        <Button className="flex-1 px-4 py-2.5 border bg-transparent border-gray-300 rounded-md flex items-center justify-center gap-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
           Chat
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => onSelect(applicant.id)}
-          className={`flex-1 px-3 py-2 rounded-md text-xs font-medium transition-colors ${
+          className={`flex-1 px-4 py-2.5 rounded-md text-sm font-medium transition-colors ${
             isSelected
               ? "bg-green-500 text-white hover:bg-green-600"
-              : "bg-[#f97316] text-white hover:bg-[#ea580c]"
+              : "bg-[#1e3a5f] text-white hover:bg-[#152a47]"
           }`}
         >
           {isSelected ? "Selected" : "Select"}
-        </button>
+        </Button>
       </div>
     </div>
   );
