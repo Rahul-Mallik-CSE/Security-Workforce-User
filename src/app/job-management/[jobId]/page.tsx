@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { jobDetailsData, applicantsData } from "@/data/JobManagementData";
 import JobRequirementsCard from "@/components/JobManagementComponents/JobRequirementsCard";
 import ApplicantsCard from "@/components/JobManagementComponents/ApplicantsCard";
+import { Button } from "@/components/ui/button";
 
 const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
   const router = useRouter();
@@ -23,16 +24,16 @@ const JobDetailsPage = ({ params }: { params: { jobId: string } }) => {
   };
 
   return (
-    <div className="max-w-[2000px] py-6  min-h-screen">
+    <div className="max-w-[2000px] mx-auto py-6  min-h-screen">
       {/* Header */}
       <div className="mb-6 flex justify-between items-center">
         <h1 className="text-3xl font-semibold text-black">Job Details</h1>
-        <button
+        <Button
           onClick={handleViewSelected}
           className="px-6 py-2 bg-[#f97316] text-white rounded-md hover:bg-[#ea580c] transition-colors"
         >
           View Selected Applicants
-        </button>
+        </Button>
       </div>
       <div className="bg-white mx-auto p-6 rounded-xl">
         {/* Main Content Grid */}

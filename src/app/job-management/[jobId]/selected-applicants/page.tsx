@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { selectedApplicantsData } from "@/data/JobManagementData";
 import DeleteModal from "@/components/CommonComponents/DeleteModal";
 import ApplicantsCard from "@/components/JobManagementComponents/ApplicantsCard";
+import { Button } from "@/components/ui/button";
 
 const SelectedApplicantsPage = ({ params }: { params: { jobId: string } }) => {
   const router = useRouter();
@@ -39,23 +40,23 @@ const SelectedApplicantsPage = ({ params }: { params: { jobId: string } }) => {
   };
 
   return (
-    <div className="w-full p-6 bg-white min-h-screen">
-      <div className="max-w-[1400px] mx-auto">
+    <div className="max-w-[2000px] mx-auto py-6 min-h-screen">
+      <div className=" mx-auto">
         {/* Header */}
         <div className="mb-6 flex justify-between items-center">
-          <h1 className="text-2xl font-semibold text-[#1e293b]">
+          <h1 className="text-3xl font-semibold text-[#1e293b]">
             Selected Applicants
           </h1>
-          <button
+          <Button
             onClick={handleBackToDetails}
             className="px-6 py-2 border border-gray-300 text-[#1e293b] rounded-md hover:bg-gray-50 transition-colors"
           >
             Back to Job Details
-          </button>
+          </Button>
         </div>
 
         {/* Applicants Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="bg-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-6 rounded-2xl">
           {selectedApplicantsData.map((applicant) => (
             <ApplicantsCard
               key={applicant.id}
