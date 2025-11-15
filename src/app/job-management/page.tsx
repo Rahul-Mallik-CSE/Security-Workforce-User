@@ -8,6 +8,7 @@ import { Search, Eye, Trash2 } from "lucide-react";
 import CustomTable from "@/components/CommonComponents/CustomTable";
 import { TableColumn, JobManagementData } from "@/types/AllTypes";
 import { jobManagementData } from "@/data/JobManagementData";
+import { Button } from "@/components/ui/button";
 
 const JobManagementPage = () => {
   const router = useRouter();
@@ -107,10 +108,10 @@ const JobManagementPage = () => {
           </div>
 
           {/* Create New Job Button */}
-          <button className="flex items-center gap-2 px-4 py-1 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors whitespace-nowrap">
+          <Button className="flex items-center gap-2 px-4 py-1 bg-orange-500 text-white rounded-lg  hover:bg-orange-600 transition-colors whitespace-nowrap">
             <span className="text-lg">+</span>
             <span className="text-sm font-medium">Create New Job</span>
-          </button>
+          </Button>
         </div>
       </div>
 
