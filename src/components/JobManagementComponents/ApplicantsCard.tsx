@@ -12,12 +12,16 @@ interface ApplicantsCardProps {
   applicant: ApplicantData;
   isSelected: boolean;
   onSelect: (id: string) => void;
+  showDelete?: boolean;
+  onDelete?: (id: string) => void;
 }
 
 const ApplicantsCard = ({
   applicant,
   isSelected,
   onSelect,
+  showDelete = false,
+  onDelete,
 }: ApplicantsCardProps) => {
   return (
     <div className="border border-gray-200 rounded-lg p-6 flex flex-col">
@@ -66,16 +70,25 @@ const ApplicantsCard = ({
         <Button className="flex-1 px-4 py-2.5 border bg-transparent border-gray-300 rounded-md flex items-center justify-center gap-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
           Chat
         </Button>
-        <Button
-          onClick={() => onSelect(applicant.id)}
-          className={`flex-1 px-4 py-2.5 rounded-md text-sm font-medium transition-colors ${
-            isSelected
-              ? "bg-green-500 text-white hover:bg-green-600"
-              : "bg-[#1e3a5f] text-white hover:bg-[#152a47]"
-          }`}
-        >
-          {isSelected ? "Selected" : "Select"}
-        </Button>
+        {showDelete ? (
+          <Button
+            onClick={() => onDelete?.(applicant.id)}
+            className="flex-1 px-4 py-2.5 bg-red-500 text-white rounded-md text-sm font-medium hover:bg-red-600 transition-colors"
+          >
+            Delete
+          </Button>
+        ) : (
+          <Button
+            onClick={() => onSelect(applicant.id)}
+            className={`flex-1 px-4 py-2.5 rounded-md text-sm font-medium transition-colors ${
+              isSelected
+                ? "bg-green-500 text-white hover:bg-green-600"
+                : "bg-[#1e3a5f] text-white hover:bg-[#152a47]"
+            }`}
+          >
+            {isSelected ? "Selected" : "Select"}
+          </Button>
+        )}
       </div>
     </div>
   );
