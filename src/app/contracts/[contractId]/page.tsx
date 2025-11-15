@@ -12,6 +12,7 @@ import RemunerationSection from "@/components/ContractComponents/RemunerationSec
 import ComplianceConfirmation from "@/components/ContractComponents/ComplianceConfirmation";
 import PrivacyDataSection from "@/components/ContractComponents/PrivacyDataSection";
 import AcceptanceSignature from "@/components/ContractComponents/AcceptanceSignature";
+import { Button } from "@/components/ui/button";
 
 const ContractDetailsPage = () => {
   const params = useParams();
@@ -65,19 +66,24 @@ const ContractDetailsPage = () => {
 
   return (
     <div className="min-h-screen py-6">
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-[2000px] mx-auto">
         {/* Back Button and Title */}
-        <div className="flex items-center gap-3 mb-6">
-          <button
-            onClick={() => router.back()}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            aria-label="Go back"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-          <h1 className="text-2xl md:text-3xl font-semibold">
-            Employment Contract Details
-          </h1>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3 mb-6">
+            <button
+              onClick={() => router.back()}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <h1 className="text-2xl md:text-3xl font-semibold">
+              Employment Contract Details
+            </h1>
+          </div>
+          <Button className="px-4 py-1.5 bg-orange-500 text-white text-sm rounded hover:bg-orange-600 transition-colors">
+            Download
+          </Button>
         </div>
 
         {/* Contract Sections */}
