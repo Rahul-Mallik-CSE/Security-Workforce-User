@@ -105,3 +105,13 @@ export interface ApplicantData {
   profileImage?: string;
   status?: "selected" | "pending";
 }
+
+export interface ContractData {
+  id: string;
+  contractId: string;
+  operativeName: string;
+  jobRole: string;
+  dateCreated: string;
+  status: "Cancelled" | "Pending" | "Complete" | "Signed";
+  amendRequest: "Pending" | "Accepted" | "Reject";
+}
