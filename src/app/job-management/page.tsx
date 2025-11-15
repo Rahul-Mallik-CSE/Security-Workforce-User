@@ -44,6 +44,10 @@ const JobManagementPage = () => {
     console.log("Delete job:", job.id);
   };
 
+  const handleCreateNewJob = () => {
+    router.push("/job-management/create-new-job");
+  };
+
   const renderCell = (item: JobManagementData, columnKey: string) => {
     if (columnKey === "status") {
       let statusColor = "";
@@ -108,7 +112,10 @@ const JobManagementPage = () => {
           </div>
 
           {/* Create New Job Button */}
-          <Button className="flex items-center gap-2 px-4 py-1 bg-orange-500 text-white rounded-lg  hover:bg-orange-600 transition-colors whitespace-nowrap">
+          <Button
+            onClick={handleCreateNewJob}
+            className="flex items-center gap-2 px-4 py-1 bg-orange-500 text-white rounded-lg  hover:bg-orange-600 transition-colors whitespace-nowrap"
+          >
             <span className="text-lg">+</span>
             <span className="text-sm font-medium">Create New Job</span>
           </Button>
