@@ -45,7 +45,7 @@ const PaymentPage = () => {
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6"
+          className="flex cursor-pointer items-center gap-2 text-gray-600 hover:text-gray-900 mb-6"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
@@ -250,7 +250,7 @@ const PaymentPage = () => {
                 <Button
                   type="button"
                   onClick={handleSubscribe}
-                  className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg text-sm font-medium"
+                  className="w-full bg-blue-950 hover:bg-blue-900 text-white py-3 rounded-lg text-sm font-medium"
                 >
                   Subscribe
                 </Button>
