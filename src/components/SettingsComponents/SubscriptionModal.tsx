@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface SubscriptionModalProps {
   isOpen: boolean;
@@ -21,6 +22,8 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const router = useRouter();
+
   const benefits = [
     "Access to thousands of available guards. Recruit all-stars in minutes, not months.",
     "Search and select by performance rating",
@@ -29,6 +32,11 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
     "Fill your entire roster with one job post",
     "Update work instructions with in-app chat",
   ];
+
+  const handleSubscribeNow = () => {
+    onClose();
+    router.push("/settings/payment");
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -69,7 +77,10 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
 
           {/* Subscribe Button */}
           <div className="pt-4">
-            <Button className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg text-sm font-medium">
+            <Button
+              onClick={handleSubscribeNow}
+              className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg text-sm font-medium"
+            >
               Subscribe Now
             </Button>
           </div>
