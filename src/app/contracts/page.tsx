@@ -9,10 +9,13 @@ import CustomTable from "@/components/CommonComponents/CustomTable";
 import { TableColumn, ContractData } from "@/types/AllTypes";
 import { contractData } from "@/data/ContractData";
 import { Button } from "@/components/ui/button";
+import AmendContractModal from "@/components/ContractComponents/AmendContractModal";
 
 const ContractsPage = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
+  const [isAmendModalOpen, setIsAmendModalOpen] = useState(false);
+  const [selectedContractId, setSelectedContractId] = useState("");
 
   const columns: TableColumn[] = [
     { key: "contractId", label: "Contract Id" },
@@ -33,6 +36,18 @@ const ContractsPage = () => {
       contract.jobRole.toLowerCase().includes(searchQuery.toLowerCase()) ||
       contract.status.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleAmendClick = (contractId: string) => {
+    setSelectedContractId(contractId);
+    setIsAmendModalOpen(true);
+  };
+
+  const handleAmendSubmit = (reason: string) => {
+    // Here you would typically make an API call to submit the amendment request
+    console.log("Amendment request for contract:", selectedContractId);
+    console.log("Reason:", reason);
+    // You can add notification/toast here
+  };
 
   const renderCell = (item: ContractData, columnKey: string) => {
     if (columnKey === "status") {
@@ -78,7 +93,7 @@ const ContractsPage = () => {
     if (columnKey === "action") {
       return (
         <div className="flex items-center gap-1">
-          <div className="flex items-center">
+          <div className="flex items-center gap-1">
             <Button
               onClick={() => router.push(`/contracts/${item.id}`)}
               className="p-1.5 bg-transparent rounded-full hover:bg-gray-100 text-gray-600 hover:text-blue-600 transition-colors"
@@ -86,7 +101,12 @@ const ContractsPage = () => {
             >
               <Eye className="w-5 h-5" />
             </Button>
-            <p>(Amend)</p>
+            <Button
+              onClick={() => handleAmendClick(item.contractId)}
+              className="px-2 py-1 bg-transparent hover:bg-blue-50 text-blue-600 hover:text-blue-700 text-xs font-medium transition-colors rounded"
+            >
+              (Amend)
+            </Button>
           </div>
           <Button
             onClick={() => console.log("Download contract:", item.id)}
@@ -129,6 +149,14 @@ const ContractsPage = () => {
           renderCell={renderCell}
         />
       </div>
+
+      {/* Amend Contract Modal */}
+      <AmendContractModal
+        isOpen={isAmendModalOpen}
+        onClose={() => setIsAmendModalOpen(false)}
+        contractId={selectedContractId}
+        onSubmit={handleAmendSubmit}
+      />
     </div>
   );
 };
