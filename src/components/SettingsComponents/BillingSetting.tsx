@@ -3,6 +3,8 @@
 "use client";
 
 import React from "react";
+import { Button } from "../ui/button";
+import { PenLine } from "lucide-react";
 
 const BillingSetting = () => {
   const invoices = [
@@ -16,7 +18,13 @@ const BillingSetting = () => {
 
   return (
     <div className="px-8 pb-16 ">
-      <h2 className="text-lg font-semibold mb-6">Previous Invoice</h2>
+      <div className="flex items-center justify-end border-border ">
+        {/* Edit Button */}
+        <Button className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center -mt-10 ">
+          Pay bill
+        </Button>
+      </div>
+      <h2 className="text-lg font-semibold mb-4">Previous Invoice</h2>
 
       {/* Table */}
       <div className=" rounded-lg overflow-hidden">
