@@ -5,9 +5,11 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, PenLine, Share2, Plus } from "lucide-react";
+import LicenseUploadModal from "./LicenseUploadModal";
 
 const AccountSetting = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const [isLicenseModalOpen, setIsLicenseModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     companyName: "Apex Security Solutions Pty Ltd",
     email: "Name@gmail.com",
@@ -189,7 +191,10 @@ const AccountSetting = () => {
           ))}
           {isEditing && (
             <div className="flex justify-end pt-2">
-              <Button className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center">
+              <Button
+                onClick={() => setIsLicenseModalOpen(true)}
+                className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center"
+              >
                 <Plus className="w-4 h-4" />
                 Add Licences
               </Button>
@@ -197,6 +202,12 @@ const AccountSetting = () => {
           )}
         </div>
       </div>
+
+      {/* License Upload Modal */}
+      <LicenseUploadModal
+        isOpen={isLicenseModalOpen}
+        onClose={() => setIsLicenseModalOpen(false)}
+      />
 
       {/* Action Buttons - Only show when editing */}
       {isEditing && (
