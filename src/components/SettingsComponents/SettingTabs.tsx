@@ -7,6 +7,7 @@ import { User } from "lucide-react";
 import { FiCreditCard } from "react-icons/fi";
 import AccountSetting from "./AccountSetting";
 import CardDetailsSetting from "./CardDetailsSetting";
+import BillingSetting from "./BillingSetting";
 
 export function SettingTabs() {
   return (
@@ -50,8 +51,8 @@ export function SettingTabs() {
           <AccountSetting />
         </TabsContent>
 
-        <TabsContent value="billings" className="text-center py-8">
-          <p className="text-foreground">Billings content coming soon</p>
+        <TabsContent value="billings" className="">
+          <BillingSetting />
         </TabsContent>
 
         <TabsContent value="card" className="">
