@@ -55,29 +55,14 @@ const PaymentPage = () => {
           <div className=" rounded-lg px-8  h-fit">
             {/* Logo */}
             <div className="flex  mb-6">
-              <div className="w-16 h-16 bg-blue-900 rounded-xl flex items-center justify-center">
-                <div className="text-orange-500 text-2xl font-bold">
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M20 5L25 15H15L20 5Z"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 18L20 32L28 18H12Z"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+              <div className="w-16 h-16 bg-blue-900 rounded-xl flex items-center justify-center p-2">
+                <Image
+                  src="/logo.png"
+                  alt="Securiverse Logo"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
               </div>
             </div>
 
