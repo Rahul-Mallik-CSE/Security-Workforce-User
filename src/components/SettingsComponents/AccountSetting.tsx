@@ -46,11 +46,11 @@ const AccountSetting = () => {
       {/* Form Fields */}
       <div className="space-y-6">
         {!isEditing && (
-          <div className="flex items-center justify-end border-border -mt-14">
+          <div className="flex items-center justify-end border-border ">
             {/* Edit Button */}
             <Button
               onClick={() => setIsEditing(true)}
-              className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center"
+              className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center -mt-20"
             >
               Edit <PenLine className="w-2 h-2" />
             </Button>
@@ -58,7 +58,7 @@ const AccountSetting = () => {
         )}
 
         {/* Company Name */}
-        <div className="flex items-center justify-between border-b border-border pb-2">
+        <div className="flex items-center justify-between border-b border-border pb-2 -mt-4">
           <label className="text-foreground font-medium w-32">
             Company Name
           </label>

@@ -6,13 +6,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User } from "lucide-react";
 import { FiCreditCard } from "react-icons/fi";
 import AccountSetting from "./AccountSetting";
+import CardDetailsSetting from "./CardDetailsSetting";
 
 export function SettingTabs() {
   return (
-    <div className="py-1.5 ">
-      {/* Tabs */}
-      <div className="flex justify-between items-center mb-8">
-        <Tabs defaultValue="account" className="w-auto">
+    <div className="py-1.5">
+      <Tabs defaultValue="account" className="w-full">
+        {/* Tabs */}
+        <div className="flex justify-between items-center mb-8">
           <TabsList className="bg-transparent border-b border-border rounded-none p-0 h-auto gap-8">
             <TabsTrigger
               value="account"
@@ -42,11 +43,9 @@ export function SettingTabs() {
               </span>
             </TabsTrigger>
           </TabsList>
-        </Tabs>
-      </div>
+        </div>
 
-      {/* Content */}
-      <Tabs defaultValue="account" className="w-full">
+        {/* Content */}
         <TabsContent value="account" className="space-y-6">
           <AccountSetting />
         </TabsContent>
@@ -55,8 +54,8 @@ export function SettingTabs() {
           <p className="text-foreground">Billings content coming soon</p>
         </TabsContent>
 
-        <TabsContent value="card" className="text-center py-8">
-          <p className="text-foreground">Card Details content coming soon</p>
+        <TabsContent value="card" className="py-8">
+          <CardDetailsSetting />
         </TabsContent>
       </Tabs>
     </div>
