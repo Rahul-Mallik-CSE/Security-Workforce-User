@@ -54,7 +54,7 @@ export function SettingTabs() {
           <p className="text-foreground">Billings content coming soon</p>
         </TabsContent>
 
-        <TabsContent value="card" className="py-8">
+        <TabsContent value="card" className="">
           <CardDetailsSetting />
         </TabsContent>
       </Tabs>
