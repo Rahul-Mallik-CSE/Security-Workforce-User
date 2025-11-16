@@ -2,11 +2,13 @@
 
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
-import { PenLine } from "lucide-react";
+import SubscriptionModal from "./SubscriptionModal";
 
 const BillingSetting = () => {
+  const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false);
+
   const invoices = [
     { id: "Invoice 001", date: "05 Sep, 2025", plan: "Starter", price: "$49" },
     { id: "Invoice 001", date: "05 Sep, 2025", plan: "Starter", price: "$49" },
@@ -19,8 +21,11 @@ const BillingSetting = () => {
   return (
     <div className="px-8 pb-16 ">
       <div className="flex items-center justify-end border-border ">
-        {/* Edit Button */}
-        <Button className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center -mt-10 ">
+        {/* Pay Bill Button */}
+        <Button
+          onClick={() => setIsSubscriptionModalOpen(true)}
+          className="bg-blue-900 hover:bg-blue-800 text-white gap-2 rounded-lg flex items-center -mt-10 "
+        >
           Pay bill
         </Button>
       </div>
@@ -51,6 +56,12 @@ const BillingSetting = () => {
           ))}
         </div>
       </div>
+
+      {/* Subscription Modal */}
+      <SubscriptionModal
+        isOpen={isSubscriptionModalOpen}
+        onClose={() => setIsSubscriptionModalOpen(false)}
+      />
     </div>
   );
 };
