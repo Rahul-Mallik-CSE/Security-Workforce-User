@@ -18,6 +18,7 @@ const ContractDetailsPage = () => {
   const [partyASignature, setPartyASignature] = useState<string>("");
   const [partyBSignature, setPartyBSignature] = useState<string>("");
   const [activeParty, setActiveParty] = useState<"A" | "B">("A");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Sample data - in a real app, this would be fetched based on contractId
   const contractData = {
@@ -75,6 +76,11 @@ const ContractDetailsPage = () => {
     } else {
       setPartyBSignature(signatureUrl);
     }
+  };
+
+  const handleSubmit = () => {
+    // Here you would typically make an API call to submit the contract
+    setIsSubmitted(true);
   };
 
   return (
@@ -515,14 +521,33 @@ const ContractDetailsPage = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons or Status */}
             <div className="flex justify-center gap-4 mt-12">
-              <Button className="px-8 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium">
-                Cancel
-              </Button>
-              <Button className="px-8 py-2.5 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium">
-                Submit
-              </Button>
+              {isSubmitted ? (
+                <div className="flex items-center gap-3">
+                  <span className="text-base font-medium text-gray-700">
+                    Amend Contract status
+                  </span>
+                  <div className="px-4 py-1.5 bg-yellow-100 text-yellow-700 text-sm rounded-full font-medium">
+                    Pending
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <Button
+                    onClick={() => router.back()}
+                    className="px-8 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={handleSubmit}
+                    className="px-8 py-2.5 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium"
+                  >
+                    Submit
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
