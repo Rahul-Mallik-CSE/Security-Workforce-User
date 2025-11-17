@@ -24,7 +24,7 @@ const NavBar = () => {
 
   if (
     pathname === "/sign-in" ||
-    pathname === "/forget-pass" ||
+    pathname === "/sign-up" ||
     pathname === "/verify-pass" ||
     pathname === "/verify-otp" ||
     pathname === "/reset-pass"

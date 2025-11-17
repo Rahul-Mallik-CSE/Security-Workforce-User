@@ -56,7 +56,7 @@ function DashboardSidebarContent() {
 
   if (
     pathname === "/sign-in" ||
-    pathname === "/forget-pass" ||
+    pathname === "/sign-up" ||
     pathname === "/verify-password" ||
     pathname === "/verify-otp" ||
     pathname === "/reset-pass"
