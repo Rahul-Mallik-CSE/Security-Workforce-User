@@ -13,7 +13,7 @@ const SignInPage = () => {
       </div>
 
       {/* Right Side - Banner */}
-      <div className="flex-1">
+      <div className="hidden lg:block flex-1">
         <RightBanner />
       </div>
     </div>
