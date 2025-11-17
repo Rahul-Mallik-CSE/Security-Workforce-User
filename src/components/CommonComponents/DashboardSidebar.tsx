@@ -121,7 +121,7 @@ function DashboardSidebarContent() {
 
           <SidebarMenu
             className={
-              isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-1"
+              isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-3"
             }
           >
             {navItems.map((item) => (
