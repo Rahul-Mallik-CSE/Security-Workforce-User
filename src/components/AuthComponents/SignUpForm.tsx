@@ -208,7 +208,7 @@ const SignUpForm = () => {
         <Button
           type="submit"
           disabled={!agreedToTerms}
-          className="w-full h-12 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-semibold text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="w-full h-12 bg-blue-950 hover:bg-blue-900 text-white rounded-lg font-semibold text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
           Sign Up
         </Button>
