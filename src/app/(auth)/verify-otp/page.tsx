@@ -77,7 +77,8 @@ const VerifyOtpPage = () => {
     // Handle successful OTP verification
     console.log("Verifying OTP:", otpCode);
     setError("");
-    // Navigate to reset password page or dashboard
+    // Navigate to reset password page
+    window.location.href = "/reset-pass";
   };
 
   const handleResend = () => {
