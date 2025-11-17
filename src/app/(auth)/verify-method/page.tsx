@@ -21,7 +21,8 @@ const VerifyMethodPage = () => {
     }
     // Handle verification method selection
     console.log("Selected method:", selectedMethod);
-    // Navigate to next step (e.g., enter code page)
+    // Navigate to OTP verification page
+    router.push("/verify-otp");
   };
 
   return (
