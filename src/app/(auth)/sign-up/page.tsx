@@ -1,15 +1,14 @@
 /** @format */
 
+import SignUpForm from "@/components/AuthComponents/SignUpForm";
 import RightBanner from "@/components/AuthComponents/RightBanner";
-import SignInForm from "@/components/AuthComponents/SignInForm";
-import React from "react";
 
 const SignUpPage = () => {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Sign In Form */}
       <div className="flex-1 flex items-center justify-center p-8 bg-white">
-        <SignInForm />
+        <SignUpForm />
       </div>
 
       {/* Right Side - Banner */}
