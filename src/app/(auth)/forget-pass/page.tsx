@@ -5,14 +5,18 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 
 const ForgetPassPage = () => {
+  const router = useRouter();
   const [emailOrPhone, setEmailOrPhone] = useState("");
 
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle find account logic here
     console.log("Find account for:", emailOrPhone);
+    // Navigate to verification method page
+    router.push("/verify-method");
   };
 
   return (
@@ -46,7 +50,7 @@ const ForgetPassPage = () => {
           {/* Next Button */}
           <Button
             type="submit"
-            className="w-full h-12 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg font-medium text-base"
+            className="w-full h-12 bg-blue-900 hover:bg-blue-800 text-white rounded-lg font-medium text-base"
           >
             Next
           </Button>
